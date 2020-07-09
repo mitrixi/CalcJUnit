@@ -1,0 +1,57 @@
+import com.tngtech.java.junit.dataprovider.DataProvider;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
+import static com.tngtech.java.junit.dataprovider.DataProviders.*;
+import static org.junit.Assert.*;
+
+public class CalcTest {
+    private static Calc calc;
+
+    interface UsualTests {
+    }
+
+    interface ParametrizedTests {
+    }
+
+    @BeforeClass
+    public static void createCalc() {
+        calc = new Calc();
+    }
+
+    @DataProvider
+    public static Object[][] dataProvider() {
+        return $$(
+                $(2, -2),
+                $(-2, 2),
+                $(0, 5),
+                $(5, 0)
+        );
+    }
+
+    @Test
+    @Category(UsualTests.class)
+    public void shouldReturnSumOfTwoNumbers() {
+        assertEquals(10, calc.sum(5, 5));
+    }
+
+    @Category(UsualTests.class)
+    @Test
+    public void shouldReturnDiffOfTwoNumbers() {
+        assertEquals(3, calc.subtracting(10, 7));
+    }
+
+    @Category({UsualTests.class, ParametrizedTests.class})
+    @Test
+    public void shouldReturnMultiplicationOfTwoNumbers() {
+        assertEquals(9, calc.multiplication(3, 3));
+    }
+
+    @Category({UsualTests.class, ParametrizedTests.class})
+    @Test
+    public void shouldReturnDivisionOfTwoNumbers() {
+        assertEquals(2, calc.division(10, 5));
+    }
+}
+
