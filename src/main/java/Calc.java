@@ -1,6 +1,12 @@
+import java.util.Arrays;
+
 public class Calc {
     public int sum(int a, int b) {
         return a + b;
+    }
+
+    public int sumVarArgs(int... varargs) {
+        return Arrays.stream(varargs).reduce(0, Integer::sum);
     }
 
     public int subtracting(int a, int b) {
