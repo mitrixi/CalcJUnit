@@ -1,4 +1,5 @@
 import com.tngtech.java.junit.dataprovider.DataProvider;
+import com.tngtech.java.junit.dataprovider.UseDataProvider;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -30,8 +31,8 @@ public class CalcTest {
         );
     }
 
-    @Test
     @Category(UsualTests.class)
+    @Test
     public void shouldReturnSumOfTwoNumbers() {
         assertEquals(10, calc.sum(5, 5));
     }
@@ -44,12 +45,14 @@ public class CalcTest {
 
     @Category({UsualTests.class, ParametrizedTests.class})
     @Test
+    @UseDataProvider("dataProvider")
     public void shouldReturnMultiplicationOfTwoNumbers() {
         assertEquals(9, calc.multiplication(3, 3));
     }
 
     @Category({UsualTests.class, ParametrizedTests.class})
     @Test
+    @UseDataProvider("dataProvider")
     public void shouldReturnDivisionOfTwoNumbers() {
         assertEquals(2, calc.division(10, 5));
     }
