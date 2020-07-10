@@ -1,5 +1,7 @@
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
+import interfaces.ParametrizedTests;
+import interfaces.UsualTests;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -45,7 +47,7 @@ public class CalcTest extends TestRules {
     public void shouldReturnMultiplicationOfTwoNumbers(int a, int b, int expected) {
         assertEquals(expected, calc.multiplication(a, b));
     }
-
+    @MyOwnAnnotation
     @Category({UsualTests.class, ParametrizedTests.class})
     @Test
     @UseDataProvider(value = "dataProviderDiv", location = DataProvider.class)
